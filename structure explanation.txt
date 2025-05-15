@@ -49,3 +49,57 @@ Every page.tsx inside that folder defines the rendered content for that route.
 A layout.tsx in a folder is required and wraps all its children routes.
 
 Global CSS (like Tailwind) is imported only once, inside layout.tsx.
+
+
+📘 How App Router Works
+In the new App Router (Next.js 13+), everything is based on the src/app folder:
+
+✅ page.tsx
+This is your homepage.
+
+It's rendered at the / route.
+
+✅ layout.tsx
+Shared layout for all pages.
+
+Think of this like a "template wrapper" (with <html>, <body>, header, footer, etc.)
+
+Required in every folder in app/ (or it will inherit from parent).
+
+✅ globals.css
+You import it in layout.tsx
+
+Tailwind and your custom CSS go here.
+
+🧭 How Routing Works Now
+In the App Router, routing is based on folders:
+
+Example:
+If you add this structure:
+src/app/
+├── about/
+│   ├── page.tsx    👈 Renders at /about
+
+Now http://localhost:3000/about will work.
+
+So:
+
+src/app/page.tsx → /
+
+src/app/about/page.tsx → /about
+
+src/app/contact/page.tsx → /contact
+
+
+
+🛠️ Add a New Page (Example)
+Create src/app/about/page.tsx:
+
+export default function AboutPage() {
+  return (
+    <div>
+      <h1>About Us</h1>
+      <p>This is the about page using the App Router.</p>
+    </div>
+  );
+}
