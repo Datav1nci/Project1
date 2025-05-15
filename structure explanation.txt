@@ -103,3 +103,7 @@ export default function AboutPage() {
     </div>
   );
 }
+
+once commit is made,url will work
+ https://project1-ten-sable.vercel.app/contact 
+https://project1-ten-sable.vercel.app/about
