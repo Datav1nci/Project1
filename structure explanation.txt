@@ -155,3 +155,184 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     </html>
   );
 }
+
+
+
+
+Add navigation bar > chnage the file source/app/layout.tsx
+
+import type { Metadata } from "next";
+import { Geist, Geist_Mono } from "next/font/google";
+import Link from "next/link";
+import "./globals.css";
+
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+export const metadata: Metadata = {
+  title: "Web App Title",
+  description: "Web app description",
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="en">
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
+        {/* Global Navigation */}
+        <nav className="p-4 border-b border-gray-300 flex space-x-4 bg-white">
+          <Link href="/" className="text-blue-600 hover:underline">
+            Home
+          </Link>
+          <Link href="/about" className="text-blue-600 hover:underline">
+            About
+          </Link>
+          <Link href="/contact" className="text-blue-600 hover:underline">
+            Contact
+          </Link>
+        </nav>
+
+        {/* Page Content */}
+        <main className="p-4">
+          {children}
+        </main>
+
+        {/* Service Worker Registration */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              if ('serviceWorker' in navigator) {
+                window.addEventListener('load', () => {
+                  navigator.serviceWorker
+                    .register('/service-worker.js')
+                    .then((registration) => {
+                      console.log('Service Worker registered with scope:', registration.scope);
+                    })
+                    .catch((error) => {
+                      console.error('Service Worker registration failed:', error);
+                    });
+                });
+              }
+            `,
+          }}
+        />
+      </body>
+    </html>
+  );
+}
+
+
+
+
+📄  Make it responsive  create file src/components/Nav.tsx
+
+"use client";
+
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+
+const links = [
+  { href: "/", label: "Home" },
+  { href: "/about", label: "About" },
+  { href: "/contact", label: "Contact" },
+];
+
+export default function Nav() {
+  const pathname = usePathname();
+
+  return (
+    <nav className="w-full bg-white border-b border-gray-200 shadow-sm sticky top-0 z-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between h-16 items-center">
+          <div className="flex items-center space-x-8">
+            <span className="text-xl font-bold tracking-tight text-gray-900">MyApp</span>
+            {links.map(({ href, label }) => (
+              <Link
+                key={href}
+                href={href}
+                className={`text-sm font-medium transition-colors ${
+                  pathname === href
+                    ? "text-blue-600"
+                    : "text-gray-600 hover:text-blue-600"
+                }`}
+              >
+                {label}
+              </Link>
+            ))}
+          </div>
+        </div>
+      </div>
+    </nav>
+  );
+}
+
+
+
+📄 Updated src/app/layout.tsx
+import type { Metadata } from "next";
+import { Geist, Geist_Mono } from "next/font/google";
+import Nav from "../components/Nav";
+import "./globals.css";
+
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+export const metadata: Metadata = {
+  title: "Web App Title",
+  description: "Web app description",
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="en">
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-50 text-gray-900`}
+      >
+        <Nav />
+        <main className="max-w-7xl mx-auto px-4 py-6">{children}</main>
+
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              if ('serviceWorker' in navigator) {
+                window.addEventListener('load', () => {
+                  navigator.serviceWorker
+                    .register('/service-worker.js')
+                    .then((registration) => {
+                      console.log('Service Worker registered with scope:', registration.scope);
+                    })
+                    .catch((error) => {
+                      console.error('Service Worker registration failed:', error);
+                    });
+                });
+              }
+            `,
+          }}
+        />
+      </body>
+    </html>
+  );
+}
