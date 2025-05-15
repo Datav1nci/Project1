@@ -1,8 +1,8 @@
 export default function AboutPage() {
   return (
-    <div>
+    <main>
       <h1>About Us</h1>
-      <p>About page</p>
-    </div>
+      <p>This is the about page using the App Router!</p>
+    </main>
   );
 }

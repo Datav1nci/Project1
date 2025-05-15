@@ -1,8 +1,8 @@
 export default function ContactPage() {
   return (
-    <div>
+    <main>
       <h1>Contact Us</h1>
-      <p>Contact page</p>
-    </div>
+      <p>This is the contact page using the App Router!</p>
+    </main>
   );
 }

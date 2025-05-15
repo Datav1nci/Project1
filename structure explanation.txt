@@ -107,3 +107,51 @@ export default function AboutPage() {
 once commit is made,url will work
  https://project1-ten-sable.vercel.app/contact 
 https://project1-ten-sable.vercel.app/about
+
+structure update
+src/
+└── app/
+    ├── page.tsx             ✅ Homepage → "/"
+    ├── about/page.tsx       ✅ About page → "/about"
+    └── contact/page.tsx     ✅ Contact page → "/contact"
+
+
+
+Navigation with next/link
+
+import Link from 'next/link';
+
+<Link href="/about">About</Link>  // Client-side navigation ✅
+
+
+This enables client-side routing — faster, smoother, and preserves state.
+
+🔧 How to Add Navigation
+Let’s add a shared navigation bar to your site using the layout.tsx file:
+
+📄 src/app/layout.tsx
+Edit it like this:
+import './globals.css';
+import Link from 'next/link';
+
+export const metadata = {
+  title: 'My MVP',
+  description: 'Basic Next.js app with routing',
+};
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <body>
+        <nav style={{ padding: '1rem', borderBottom: '1px solid #ccc' }}>
+          <Link href="/" style={{ marginRight: '1rem' }}>Home</Link>
+          <Link href="/about" style={{ marginRight: '1rem' }}>About</Link>
+          <Link href="/contact">Contact</Link>
+        </nav>
+        <main style={{ padding: '1rem' }}>
+          {children}
+        </main>
+      </body>
+    </html>
+  );
+}
