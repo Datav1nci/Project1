@@ -5,7 +5,7 @@ export default function Home() {
         Home Page
       </h1>
       <p className="text-lg text-gray-700">
-        Welocome - Website under construction
+        Welcome - Website under construction
       </p>
     </main>
   );
