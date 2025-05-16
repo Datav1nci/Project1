@@ -31,6 +31,7 @@ export default function RootLayout({
         <Nav />
         <main className="max-w-7xl mx-auto px-4 py-6">{children}</main>
 
+
         <script
           dangerouslySetInnerHTML={{
             __html: `

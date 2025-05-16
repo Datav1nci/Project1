@@ -24,17 +24,19 @@ export default function Nav() {
     }
   }, []);
 
-  const toggleDarkMode = () => {
-    const newMode = !darkMode;
-    setDarkMode(newMode);
-    if (newMode) {
-      document.documentElement.classList.add("dark");
-      localStorage.setItem("theme", "dark");
+    const toggleDarkMode = () => {
+    if (document.documentElement.classList.contains("dark")) {
+        document.documentElement.classList.remove("dark");
+        localStorage.setItem("theme", "light");
+        setDarkMode(false);
     } else {
-      document.documentElement.classList.remove("dark");
-      localStorage.setItem("theme", "light");
+        document.documentElement.classList.add("dark");
+        localStorage.setItem("theme", "dark");
+        setDarkMode(true);
     }
-  };
+    };
+
+
 
   return (
     <nav className="w-full border-b bg-white dark:bg-gray-900 dark:border-gray-800 sticky top-0 z-50">

@@ -51,6 +51,10 @@ A layout.tsx in a folder is required and wraps all its children routes.
 Global CSS (like Tailwind) is imported only once, inside layout.tsx.
 
 
+📌 Important Notes
+Since your Next.js project does not currently have a service-worker.js file, I’ll help you create a simple one to enable basic offline functionality and caching, which is a common use case for service workers in a Next.js app hosted on Vercel. I’ll also explain which files are involved and where the service-worker.js file should be placed.
+
+
 📘 How App Router Works
 In the new App Router (Next.js 13+), everything is based on the src/app folder:
 
