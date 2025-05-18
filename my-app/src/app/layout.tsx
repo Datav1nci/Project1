@@ -1,37 +1,26 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import Nav from "../components/Nav";
-import "./globals.css";
+import { Inter } from "next/font/google";
+import "@/styles/globals.css";       // ⬅ placé dans src/styles
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata: Metadata = {
-  title: "Web App Title",
-  description: "Web app description",
+  title: "Metanova – Génie-Conseil à Montréal",
+  description: "Ingénierie structurelle et développement urbain partout au Québec.",
+  keywords: ["génie-conseil", "structure", "ingénierie", "Montréal", "Metanova"],
+  authors: [{ name: "Metanova Experts-Conseils" }],
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className="">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-50 text-gray-900 dark:bg-gray-950 dark:text-white`}
-      >
-        <Nav />
-        <main className="max-w-7xl mx-auto px-4 py-6">{children}</main>
-
-
+    <html lang="fr" className={`${inter.variable} scroll-smooth`}>
+      <body className="antialiased bg-white text-gray-900 dark:bg-gray-950 dark:text-gray-100">
+        <Header />
+        <main className="mx-auto max-w-7xl px-4">{children}</main>
+        <Footer />
+      
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -49,7 +38,7 @@ export default function RootLayout({
               }
             `,
           }}
-        />
+        />      
       </body>
     </html>
   );
