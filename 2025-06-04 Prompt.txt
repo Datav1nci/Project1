@@ -1,0 +1,8 @@
+
+act as an  REACT / Next.js 15.3.2 (Turbopack) / TypeScript expert. continue this project. 
+Next.js application hosted on Vercel, with a typical directory structure including public, app, and components folders, along with a service-worker.js file for potential Progressive Web App (PWA) features.
+
+Tools used are, VS Studio Code and Github Extension. 
+
+Question, how to update cache ?
+proper suspense handling?

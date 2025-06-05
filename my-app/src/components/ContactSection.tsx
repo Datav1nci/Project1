@@ -1,8 +1,14 @@
 "use client";
-import { useState } from "react";
+
+import { useState, useEffect } from "react";
 
 export default function ContactSection() {
-  const [status, setStatus] = useState<"idle"|"loading"|"sent">("idle");
+  const [status, setStatus] = useState<"idle" | "loading" | "sent">("idle");
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true); // Only render dynamic content after mount
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -16,6 +22,10 @@ export default function ContactSection() {
     setStatus("sent");
     e.currentTarget.reset();
   };
+
+  if (!isMounted) {
+    return null; // Prevent rendering on server
+  }
 
   return (
     <section id="contact" className="py-20 bg-gray-50 dark:bg-gray-900/40">

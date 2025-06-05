@@ -1,0 +1,2 @@
+EXEC ADD_SUB_DESCRIPTION_CATEGORY('Wire Payment.*', 'Financial Services');
+for accounting
