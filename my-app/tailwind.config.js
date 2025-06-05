@@ -7,5 +7,5 @@ module.exports = {
       colors: { primary: "#3B82F6" },
     },
   },
-  plugins: [require("@tailwindcss/forms")],
+  //plugins: [require("@tailwindcss/forms")],
 };
