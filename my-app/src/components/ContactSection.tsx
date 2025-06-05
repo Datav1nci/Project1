@@ -14,7 +14,7 @@ export default function ContactSection() {
     e.preventDefault();
     setStatus("loading");
 
-    const data = Object.fromEntries(new FormData(e.currentTarget));
+    //const data = Object.fromEntries(new FormData(e.currentTarget));
 
     // ➜ Intégrer EmailJS OU fetch('/api/contact', {method:"POST", body:JSON.stringify(data)})
     await new Promise((r) => setTimeout(r, 1500)); // démo
