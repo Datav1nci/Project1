@@ -33,55 +33,19 @@ export default function ContactSection() {
 
       <div className="mx-auto grid max-w-5xl gap-8 md:grid-cols-2">
         {/* Form */}
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <input
-            required
-            name="name"
-            placeholder="Nom"
-            className="w-full rounded border px-4 py-2 dark:bg-gray-800"
-          />
-          <input
-            required
-            type="email"
-            name="email"
-            placeholder="Courriel"
-            className="w-full rounded border px-4 py-2 dark:bg-gray-800"
-          />
-          <input
-            name="phone"
-            placeholder="Téléphone"
-            className="w-full rounded border px-4 py-2 dark:bg-gray-800"
-          />
-          <textarea
-            required
-            name="message"
-            placeholder="Message"
-            rows={5}
-            className="w-full rounded border px-4 py-2 dark:bg-gray-800"
-          />
-          <button
-            type="submit"
-            disabled={status === "loading"}
-            className="rounded bg-blue-600 px-6 py-2 font-medium text-white hover:bg-blue-700 disabled:opacity-50"
-          >
-            {status === "loading" ? "Envoi…" : "Envoyer"}
-          </button>
-          {status === "sent" && (
-            <p className="text-green-600">Merci ! Nous vous répondrons rapidement.</p>
-          )}
-        </form>
-
+        
+      
         {/* Coordonnées + carte */}
         <div className="space-y-4 text-gray-700 dark:text-gray-300">
           <p>
-            <strong>Téléphone :</strong> <a href="tel:5142223444">514 222-3444</a>
+            <strong>Téléphone :</strong> <a href="tel:5142223444">450 259-1829</a>
           </p>
           <p>
             <strong>Courriel :</strong>{" "}
-            <a href="mailto:info@metanova.ca">info@metanova.ca</a>
+            <a href="mailto:info@metanova.ca">effitaxes@gmail.com</a>
           </p>
           <p>
-            <strong>Adresse :</strong> 123 Rue Sherbrooke O., Montréal, QC H2X 1V5
+            <strong>Adresse :</strong> 9700 Boulv Saint-Michel, Montréal, QC
           </p>
 
           <iframe
