@@ -3,25 +3,25 @@
 import { useState, useEffect } from "react";
 
 export default function ContactSection() {
-  const [status, setStatus] = useState<"idle" | "loading" | "sent">("idle");
+  //const [status, setStatus] = useState<"idle" | "loading" | "sent">("idle");
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
     setIsMounted(true); // Only render dynamic content after mount
   }, []);
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setStatus("loading");
-
-    //const data = Object.fromEntries(new FormData(e.currentTarget));
-
-    // ➜ Intégrer EmailJS OU fetch('/api/contact', {method:"POST", body:JSON.stringify(data)})
-    await new Promise((r) => setTimeout(r, 1500)); // démo
-
-    setStatus("sent");
-    e.currentTarget.reset();
-  };
+//  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+//    e.preventDefault();
+//    setStatus("loading");
+//
+//    //const data = Object.fromEntries(new FormData(e.currentTarget));
+//
+//    // ➜ Intégrer EmailJS OU fetch('/api/contact', {method:"POST", body:JSON.stringify(data)})
+//    await new Promise((r) => setTimeout(r, 1500)); // démo
+//
+//    setStatus("sent");
+//    e.currentTarget.reset();
+//  };
 
   if (!isMounted) {
     return null; // Prevent rendering on server
@@ -42,7 +42,7 @@ export default function ContactSection() {
           </p>
           <p>
             <strong>Courriel :</strong>{" "}
-            <a href="mailto:info@metanova.ca">effitaxes@gmail.com</a>
+            <a href="mailto:effitaxes@gmail.com">effitaxes@gmail.com</a>
           </p>
           <p>
             <strong>Adresse :</strong> 9700 Boulv Saint-Michel, Montréal, QC
